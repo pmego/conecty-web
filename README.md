@@ -1,16 +1,41 @@
-# React + Vite
+Conecty Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sitio web corporativo desarrollado para Conecty, enfocado en presentar servicios de internet por fibra óptica mediante una interfaz moderna, rápida y responsive.
 
-Currently, two official plugins are available:
+🚀 Tecnologías
+React
+Vite
+JavaScript
+CSS3
+✨ Características
+Diseño responsive para dispositivos móviles y escritorio.
+Interfaz moderna y optimizada.
+Navegación fluida.
+Secciones informativas de servicios y planes.
+Integración con formularios de contacto.
+📦 Instalación
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Clona el repositorio:
 
-## React Compiler
+git clone https://github.com/pmego/conecty-web.git
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Ingresa al proyecto:
 
-## Expanding the ESLint configuration
+cd conecty-web
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Instala las dependencias:
+
+npm install
+
+Inicia el entorno de desarrollo:
+npm run dev
+
+🛠️ Build de producción:
+npm run build
+
+🌐 Sitio web:
+https://conecty.pe
+
+👨‍💻 Autor
+
+Desarrollado por Paolo Mego.
