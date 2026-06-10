@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+
+@theme {
+  /* Fuentes */
+  --font-fira: "Fira Sans", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+
+  /* Colores */
+  --color-primary: #4C078C;
+  --color-secondary: #00ADBA;
+  --color-tertiary: #FFCC00;
+
+  /* breakpoints */
+  --breakpoint-xxs: 400px;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-fira);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* FUENTES */
+
+@utility font-poppins {
+  font-family: var(--font-poppins);
+}
+
+@utility font-fira {
+  font-family: var(--font-fira);
+}
+
+/* COLORES */
+@utility bg-primary {
+  background-color: var(--color-primary);
+}
+
+@utility text-primary {
+  color: var(--color-primary);
+}
+
+@utility bg-secondary {
+  background-color: var(--color-secondary);
+}
+
+@utility text-secondary {
+  color: var(--color-secondary);
+}
+
+@utility bg-tertiary {
+  background-color: var(--color-tertiary);
+}
+
+@utility text-tertiary {
+  color: var(--color-tertiary);
+}
