@@ -11,7 +11,7 @@ function Faq() {
 
     return (
         <section id="preguntas" className="pb-40 px-4 bg-[#FFFFFF]">
-            <img src={logo} alt="" className="mx-auto h-45 mb-10"/>
+            <img src={logo} alt="" className="mx-auto h-30 md:h-45 mb-10"/>
             <div className="max-w-3xl mx-auto text-center">
                 <h2 className="text-2xl md:text-4xl font-bold text-secondary">
                     PREGUNTAS FRECUENTES
