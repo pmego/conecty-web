@@ -8,7 +8,7 @@ function Hero() {
     "Hola 👋, quiero información sobre los planes de internet de Conecty.";
 
   return (
-    <section className="w-full pt-21.5">
+    <section className="w-full pt-8">
       <div className="relative">
 
         <img
