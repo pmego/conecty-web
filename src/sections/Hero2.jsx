@@ -43,7 +43,7 @@ export default function Hero2() {
                                 </span>
 
                                 <h2 className="text-secondary text-5xl md:text-7xl font-extrabold leading-none">
-                                    160
+                                    140
                                 </h2>
 
                                 <p className="tracking-[0.3em] text-sm md:text-base">

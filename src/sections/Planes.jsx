@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
 
 import "swiper/css";
+import "swiper/css/pagination";
 import tvBlanca from "../assets/imagenes/iconos/tvBlanca.png";
 import wifiBlanco from "../assets/imagenes/iconos/wifiBLanco.png";
 import tvMorada from "../assets/imagenes/iconos/tvMorada.png";
@@ -185,16 +187,16 @@ export default function Planes() {
 
                                         {/* VELOCIDAD */}
                                         <div className="text-center">
-                                            <h2 className="text-[65px] sm:text-[80px] lg:text-[100px] font-extrabold text-primary leading-none">
+                                            <h2 className="text-[65px] sm:text-[80px] lg:text-[100px] font-extrabold leading-none bg-linear-to-b from-secondary to-primary bg-clip-text text-transparent">
                                                 {plan.velocidad}
                                             </h2>
 
                                             <div className="flex justify-center items-center gap-2">
-                                                <span className="bg-secondary text-white text-xs sm:text-sm px-4 sm:px-7 py-1 rounded-full font-semibold">
+                                                <span className="bg-linear-to-b from-secondary to-primary text-white text-xs sm:text-sm px-4 sm:px-7 py-1 rounded-full font-semibold">
                                                     Mbps
                                                 </span>
 
-                                                <span className="text-secondary text-sm font-semibold">
+                                                <span className="bg-linear-to-b from-secondary to-primary bg-clip-text text-transparent text-sm font-semibold">
                                                     de Velocidad
                                                 </span>
                                             </div>
@@ -203,58 +205,105 @@ export default function Planes() {
                                         {/* INCLUDE */}
                                         <div className="border-2 border-secondary rounded-[20px] mt-5 overflow-hidden">
 
-                                            <div className="bg-secondary p-3 text-center">
-                                                <h4 className="font-semibold text-primary text-xl">
-                                                    Incluye:
-                                                </h4>
+                                            <div className={`
+                                                    p-3 text-center
+                                                    ${plan.id <= 2 && activeTab === "internet" ? "bg-trasnparent" : "bg-secondary"}
+                                                `}>
 
-                                                <div className="flex items-center justify-center py-6">
-                                                    {plan.incluye.map((item, index) => (
-                                                        <div
-                                                            key={index}
-                                                            className="flex items-center"
-                                                        >
-                                                            <motion.img
-                                                                src={item}
-                                                                alt="incluye"
-                                                                initial={{
-                                                                    opacity: 0,
-                                                                    scale: 0.9,
-                                                                }}
-                                                                animate={{
-                                                                    opacity: 1,
-                                                                    scale: 1,
-                                                                }}
-                                                                transition={{
-                                                                    duration: 0.3,
-                                                                }}
-                                                                className={`
-                                                                    object-contain transition-all
-                                                                    ${activeTab === "internet"
-                                                                        ? "w-20 sm:w-24 lg:w-25"
-                                                                        : index === 0
-                                                                            ? "w-14 sm:w-18"
-                                                                            : "w-14 sm:w-18"
-                                                                    }
-                                                                `}
-                                                            />
+                                                <div className="flex flex-col items-center justify-center py-6 gap-2">
+                                                    {plan.incluye.length === 3 ? (
+                                                        <>
+                                                            {/* Fila superior (2 imágenes) */}
+                                                            <div className="flex items-center justify-center gap-2">
+                                                                {plan.incluye.slice(0, 2).map((item, index) => (
+                                                                    <div key={index} className="flex items-center gap-2">
 
-                                                            {/* símbolo + */}
-                                                            {index <
-                                                                plan.incluye.length - 1 && (
-                                                                    <span className="text-primary text-3xl font-bold mx-2">
-                                                                        +
+                                                                        <motion.img
+                                                                            src={item}
+                                                                            alt="incluye"
+                                                                            initial={{ opacity: 0, scale: 0.9 }}
+                                                                            animate={{ opacity: 1, scale: 1 }}
+                                                                            transition={{ duration: 0.3 }}
+                                                                            className={`
+                                                                            object-contain
+                                                                            ${index === 1 && [5, 6, 7, 8].includes(plan.id)
+                                                                                    ? "h-14 sm:h-18"
+                                                                                    : "w-14 sm:w-18"
+                                                                                }
+                                                                            `}
+                                                                        />
+                                                                        {index === 0 && (
+                                                                            <span className="text-lg sm:text-2xl font-semibold text-primary">
+                                                                                +
+                                                                            </span>
+                                                                        )}
+
+                                                                    </div>
+                                                                ))}
+                                                            </div>
+
+                                                            {/* Fila inferior (1 imagen centrada) */}
+                                                            <div className="flex flex-col items-center">
+                                                                <motion.img
+                                                                    src={plan.incluye[2]}
+                                                                    alt="incluye"
+                                                                    initial={{ opacity: 0, scale: 0.9 }}
+                                                                    animate={{ opacity: 1, scale: 1 }}
+                                                                    transition={{ duration: 0.3 }}
+                                                                    className="h-15 sm:h-15 object-contain"
+                                                                />
+
+                                                                {/* 👇 AQUI VA MESH */}
+                                                                {[7, 8].includes(plan.id) && (
+                                                                    <span className="text-xs text-white mt-1">
+                                                                        Mesh
                                                                     </span>
                                                                 )}
+                                                            </div>
+                                                        </>
+                                                    ) : (
+                                                        /* Caso normal (1 o 2 imágenes) */
+                                                        <div className="flex flex-col justify-center items-center py-6 h-40">
+                                                            <div className="flex items-center justify-center gap-2">
+                                                                {plan.incluye.map((item, index) => (
+                                                                    <div key={index} className="flex items-center gap-2">
+
+                                                                        <motion.img
+                                                                            src={item}
+                                                                            className={`
+                                                                                    object-contain
+                                                                                    ${[5, 6].includes(plan.id)
+                                                                                    ? "h-15 sm:h-15"
+                                                                                    : "h-25 sm:h-25"
+                                                                                }
+                                                                            `}
+                                                                        />
+                                                                        {plan.incluye.length === 2 && index === 0 && (
+                                                                            <span className="text-lg sm:text-xl font-semibold text-primary">
+                                                                                +
+                                                                            </span>
+                                                                        )}
+
+                                                                    </div>
+                                                                ))}
+                                                            </div>
+
                                                         </div>
-                                                    ))}
+
+                                                    )}
+                                                </div>
+                                                <div className={`
+                                                        uppercase text-xs
+                                                        ${plan.id <= 2 ? "text-primary" : "text-white"}
+                                                    `}>
+                                                    {plan.texto}
                                                 </div>
                                             </div>
 
                                             <div className="text-center">
                                                 <p
                                                     className={`
-                                                        text-[10px] text-secondary min-h-8 pt-1 pb-3
+                                                        text-[10px] text-gray-400 min-h-8 pt-1 pb-3
                                                         ${!plan.regular && "invisible"}
                                                     `}
                                                 >
@@ -286,7 +335,7 @@ export default function Planes() {
                                             <div
                                                 className={`
                                                     border-t border-secondary text-center
-                                                    text-secondary font-bold py-1 min-h-8.5
+                                                    text-primary font-bold py-1 min-h-8.5
                                                     flex items-center justify-center
                                                     ${!plan.promo && "invisible"}
                                                 `}
@@ -318,7 +367,7 @@ export default function Planes() {
                                             }}
                                             className="w-full mt-4 bg-primary text-white rounded-2xl py-3 sm:py-4 flex items-center justify-center gap-2 font-bold text-sm sm:text-base uppercase transition hover:scale-[1.02] cursor-pointer"
                                         >
-                                            <img src={wspBlanco} alt="" className="w-6"/>
+                                            <img src={wspBlanco} alt="" className="w-6" />
                                             Quiero mi plan
                                         </button>
                                     </div>
